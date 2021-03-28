@@ -6,11 +6,9 @@ This is a language that was made for fun. It is completely written in python. <b
 # Installation
 
 Stable Release: `pip install as` <br>
-<<<<<<< HEAD
 Working Version: `pip install `
 =======
 Working Version: `pip install git+https://github.com/alexshcer/aslang.git`
->>>>>>> b54237dd3b1e0a86395d3cb31197c757389da10a
 
 This is all that you need to do to start writing in aslang.
 
@@ -21,11 +19,9 @@ python -m aslang [filename]
 The filename is optional, if no filename is provided it will run the shell.
 
 # Online IDE 
-<<<<<<< HEAD
 If you don't want to use aslang on your local machine you can try it out on the Online IDE: https
 =======
-If you don't want to use as on your local machine you can try it out on the Online IDE: https://codewithswastik.github.io/swas/
->>>>>>> b54237dd3b1e0a86395d3cb31197c757389da10a
+If you don't want to use as on your local machine you can try it out on the Online IDE: 
 
 # Getting Started
 
