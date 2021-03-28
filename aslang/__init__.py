@@ -1,0 +1,5 @@
+__author__ = "asadev"
+__title__ = "aslang"
+__license__ = "MIT"
+__copyright__ = "Copyright 2021 asdev"
+__version__ = "0.1"
