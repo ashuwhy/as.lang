@@ -6,8 +6,6 @@ This is a language that was made for fun. It is completely written in python. <b
 # Installation
 
 Stable Release: `pip install as` <br>
-Working Version: `pip install `
-=======
 Working Version: `pip install git+https://github.com/alexshcer/aslang.git`
 
 This is all that you need to do to start writing in aslang.
