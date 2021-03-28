@@ -1,4 +1,3 @@
-
 from sly import Lexer
 
 class asLexer(Lexer):

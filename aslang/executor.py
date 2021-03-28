@@ -1,5 +1,5 @@
-from as_lexer import asLexer
-from as_parser import asParser
+from .as_lexer import asLexer
+from .as_parser import asParser
 
 VERSION = "0.1"
 
