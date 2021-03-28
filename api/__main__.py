@@ -2,6 +2,7 @@ from http.server import HTTPServer
 
 from .run import handler
 
+version="0.1"
 
 def main():
     server = HTTPServer(("localhost", 8080), handler)
