@@ -1,71 +1,66 @@
-# The as programming language
-This is a language that was made for fun. It is completely written in python. <br>
+# AS Programming Language
 
-`Latest Version: 0.1`
+AS is a lightweight programming language implemented in Python, designed for simplicity and ease of use.
 
-# Installation
+![Version](https://img.shields.io/badge/version-0.1-blue)
 
-Stable Release: `pip install as` <br>
-Working Version: `pip install git+https://github.com/alexshcer/aslang.git`
+## Installation
 
-This is all that you need to do to start writing in aslang.
+You can install AS using one of the following methods:
 
-# Running 
+**Stable Release:**
+```bash
+pip install as
 ```
+
+**Development Version:**
+```bash
+pip install git+https://github.com/alexshcer/aslang.git
+```
+
+## Usage
+
+Run AS programs using:
+```bash
 python -m aslang [filename]
 ```
-The filename is optional, if no filename is provided it will run the shell.
+If no filename is provided, AS will start in interactive shell mode.
 
-# Online IDE 
-If you don't want to use aslang on your local machine you can try it out on the Online IDE: https
-=======
-If you don't want to use as on your local machine you can try it out on the Online IDE: 
+## Language Features
 
-# Getting Started
+### Basic Syntax
 
-## Hello World
-```js
+**Hello World**
+```javascript
 output "Hello, World!"
 ```
 
-## Variables
-Variables are containers for storing data.
+### Variables
 
-### Creating Variables
-as has no command for declaring a variable.
+Variables are dynamically typed and created upon first assignment:
 
-A variable is created the moment you first assign a value to it.
-
-```js
+```javascript
 x = 5
 y = "Mark"
+output x    // Displays: 5
+output y    // Displays: Mark
 ```
 
-### Using Variables
-To use the variables, simply reference them
+> **Note:** Variable names are case-sensitive
 
-```js
-output x
-output y
-```
+### Comments
 
-### Case Sensitive 
-Note: Variables names are case sensitive i.e. `a = 5` is not the same as `A = 5`
-
-## Comments
-A Comment starts with a //, and anything after them will be ignored:
-```js
-//This is a comment
+Single-line comments start with `//`:
+```javascript
+// This is a comment
 output "Hello, World!"
 ```
 
+### Operators
 
-## Operators
-Operators are used to perform operations on variables and values.
+#### Arithmetic Operators
 
-### Arithmetic Operators
-
-| Operator | Name           | Example |
+| Operator | Description    | Example |
 |----------|----------------|---------|
 | +        | Addition       | x + y   |
 | -        | Subtraction    | x - y   |
@@ -76,78 +71,72 @@ Operators are used to perform operations on variables and values.
 | dec      | Decrement      | dec x   |
 | ^        | Exponent       | x ^ y   |
 
-### Logical Operators
-| Operator | Name                     | Example |
+#### Comparison Operators
+
+| Operator | Description              | Example |
 |----------|--------------------------|---------|
-| ==       | Equals                   | x == y  |
-| !=       | Not Equals               | x != y  |
-| >        | Greater than             | x > y   |
-| >=       | Greater than or equal to | x >= y  |
-| <        | Lesser than              | x < y   |
-| <=       | Lesser than or equal to  | x <= y  |
+| ==       | Equal to                 | x == y  |
+| !=       | Not equal to            | x != y  |
+| >        | Greater than            | x > y   |
+| >=       | Greater than or equal   | x >= y  |
+| <        | Less than               | x < y   |
+| <=       | Less than or equal      | x <= y  |
 
+### Control Structures
 
+#### If-Else Statements
 
-### The Assignment Operator ( = )
-The Assignment Operator ( = ) is used to assign a variable to a value.
-
-
-### If Else 
-An "if else statement" is written by using the if and else keywords.
-
-Syntax
-```cpp
+```javascript
 if condition {
-  statement 
-}
-else {
-  statement 
+    statement
+} else {
+    statement
 }
 ```
-Note: The indentation isn't needed, it has been used here for readability
 
-Example
-```cpp
+Example:
+```javascript
 name = input "Enter your name: "
 if name == "John" {
-  output "hi," + name 
-}
-else {
-  output "bye," + name 
+    output "Hi, " + name
+} else {
+    output "Bye, " + name
 }
 ```
 
-### While Do
-With the while loop you can execute a set of statements as long as a condition is true.
+#### While Loops
 
-Syntax
-```cpp
+```javascript
 while condition 
 do {
-  statement
+    statement
 }
 ```
 
-Note: The indentation isn't needed, it has been used here for readability
-
-Example
-```cpp
-start = 1 
-end = 10 
-
+Example:
+```javascript
+start = 1
+end = 10
 while start != end
 do {
-  output start
-  inc start 
+    output start
+    inc start
 }
 ```
 
-## Data Types
+### Data Structures
 
-### Lists/Arrays
-List/Array is a data structure consisting of a collection of values or variables. A list can be created using square brackets ([])
+#### Lists/Arrays
 
-Example
-```cpp
-list = [1,2,3,4,5]
+Create lists using square brackets:
+```javascript
+list = [1, 2, 3, 4, 5]
 ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
