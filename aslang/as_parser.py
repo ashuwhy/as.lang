@@ -205,3 +205,33 @@ class asParser(Parser):
     @_('NAME')
     def expr(self, p):
         return ('name', p.NAME)
+
+    # 3D array creation
+    @_('ARRAY LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array3d', p.expr0, p.expr1, p.expr2)
+
+    # 4D array creation
+    @_('ARRAY LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array4d', p.expr0, p.expr1, p.expr2, p.expr3)
+
+    # 3D array access
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array_access3d', p.NAME, p.expr0, p.expr1, p.expr2)
+
+    # 4D array access
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array_access4d', p.NAME, p.expr0, p.expr1, p.expr2, p.expr3)
+
+    # 3D array assignment
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE ARROW expr')
+    def statement(self, p):
+        return ('array_assign3d', p.NAME, p.expr0, p.expr1, p.expr2, p.expr3)
+
+    # 4D array assignment
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE LSQUARE expr RSQUARE ARROW expr')
+    def statement(self, p):
+        return ('array_assign4d', p.NAME, p.expr0, p.expr1, p.expr2, p.expr3, p.expr4)

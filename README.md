@@ -50,20 +50,27 @@ output y    // Displays: Mark
 
 ### Arrays
 
-AS supports both 1D and 2D arrays:
+AS supports multi-dimensional arrays (1D to 4D):
 
 ```javascript
 // 1D Array
-numbers = array[5]      // Creates array of size 5
-numbers[0] = 10         // Set value
-output numbers[0]       // Access value
+numbers = array[5]
+numbers[0] = 10
 
 // 2D Array
-matrix = array[3][3]    // Creates 3x3 matrix
-matrix[0][0] = 1        // Set value
-matrix[1][1] = 5        // Set value
-output matrix[1][1]     // Access value
+matrix = array[3][3]
+matrix[0][0] = 1
+
+// 3D Array
+cube = array[2][2][2]
+cube[0][0][0] = 1
+
+// 4D Array
+hypercube = array[2][2][2][2]
+hypercube[0][0][0][0] = 1
 ```
+
+Each array dimension is zero-indexed and supports both reading and writing operations. Arrays are initialized with zeros.
 
 ### Comments
 

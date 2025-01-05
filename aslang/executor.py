@@ -237,6 +237,72 @@ def evaluate(tree):
             print(f"as says: Array '{array_name}' hasn't been defined!")
         except IndexError:
             print(f"as says: Index [{row}][{col}] is out of range!")
+    elif rule == 'array3d':
+        dim1 = evaluate(tree[1])
+        dim2 = evaluate(tree[2])
+        dim3 = evaluate(tree[3])
+        return [[[0] * dim3 for _ in range(dim2)] for _ in range(dim1)]
+
+    elif rule == 'array4d':
+        dim1 = evaluate(tree[1])
+        dim2 = evaluate(tree[2])
+        dim3 = evaluate(tree[3])
+        dim4 = evaluate(tree[4])
+        return [[[[0] * dim4 for _ in range(dim3)] for _ in range(dim2)] for _ in range(dim1)]
+
+    elif rule == 'array_access3d':
+        array_name = tree[1]
+        idx1 = evaluate(tree[2])
+        idx2 = evaluate(tree[3])
+        idx3 = evaluate(tree[4])
+        try:
+            return names[array_name][idx1][idx2][idx3]
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{idx1}][{idx2}][{idx3}] is out of range!")
+
+    elif rule == 'array_access4d':
+        array_name = tree[1]
+        idx1 = evaluate(tree[2])
+        idx2 = evaluate(tree[3])
+        idx3 = evaluate(tree[4])
+        idx4 = evaluate(tree[5])
+        try:
+            return names[array_name][idx1][idx2][idx3][idx4]
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{idx1}][{idx2}][{idx3}][{idx4}] is out of range!")
+
+    elif rule == 'array_assign3d':
+        array_name = tree[1]
+        idx1 = evaluate(tree[2])
+        idx2 = evaluate(tree[3])
+        idx3 = evaluate(tree[4])
+        value = evaluate(tree[5])
+        try:
+            names[array_name][idx1][idx2][idx3] = value
+            return value
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{idx1}][{idx2}][{idx3}] is out of range!")
+
+    elif rule == 'array_assign4d':
+        array_name = tree[1]
+        idx1 = evaluate(tree[2])
+        idx2 = evaluate(tree[3])
+        idx3 = evaluate(tree[4])
+        idx4 = evaluate(tree[5])
+        value = evaluate(tree[6])
+        try:
+            names[array_name][idx1][idx2][idx3][idx4] = value
+            return value
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{idx1}][{idx2}][{idx3}][{idx4}] is out of range!")
     else:
         #print(rule, tree)
         pass
