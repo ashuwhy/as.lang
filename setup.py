@@ -1,3 +1,5 @@
+# author: ashuwhy
+
 from sys import argv
 from setuptools import setup, find_packages
 
