@@ -15,7 +15,7 @@ pip install as
 
 **Development Version:**
 ```bash
-pip install git+https://github.com/alexshcer/aslang.git
+pip install git+https://github.com/ashuwhy/aslang.git
 ```
 
 ## Usage
@@ -97,7 +97,7 @@ if condition {
 Example:
 ```javascript
 name = input "Enter your name: "
-if name == "John" {
+if name == "Ed Sheeran" {
     output "Hi, " + name
 } else {
     output "Bye, " + name
