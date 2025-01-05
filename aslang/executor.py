@@ -184,6 +184,59 @@ def evaluate(tree):
             
             if any([isinstance(res,Break) for res in results]):
                 break
+    elif rule == 'array1d':
+        size = evaluate(tree[1])
+        return [0] * size
+
+    elif rule == 'array2d':
+        rows = evaluate(tree[1])
+        cols = evaluate(tree[2])
+        return [[0] * cols for _ in range(rows)]
+
+    elif rule == 'array_access1d':
+        array_name = tree[1]
+        index = evaluate(tree[2])
+        try:
+            return names[array_name][index]
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index {index} is out of range!")
+
+    elif rule == 'array_access2d':
+        array_name = tree[1]
+        row = evaluate(tree[2])
+        col = evaluate(tree[3])
+        try:
+            return names[array_name][row][col]
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{row}][{col}] is out of range!")
+    elif rule == 'array_assign1d':
+        array_name = tree[1]
+        index = evaluate(tree[2])
+        value = evaluate(tree[3])
+        try:
+            names[array_name][index] = value
+            return value
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index {index} is out of range!")
+
+    elif rule == 'array_assign2d':
+        array_name = tree[1]
+        row = evaluate(tree[2])
+        col = evaluate(tree[3])
+        value = evaluate(tree[4])
+        try:
+            names[array_name][row][col] = value
+            return value
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except IndexError:
+            print(f"as says: Index [{row}][{col}] is out of range!")
     else:
         #print(rule, tree)
         pass

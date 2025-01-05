@@ -3,7 +3,7 @@ from sly import Lexer
 class asLexer(Lexer):
     tokens = { NAME, NUMBER, PLUS, TIMES, MINUS, DIVIDE, MOD, POW, ARROW, LPAREN, RPAREN,
                IF, ELIF, ELSE, WHILE, DO, BREAK, STRING, PRINT, INPUT, INC, DEC, EQ, GT, GTE, LT, LTE, NE, PASS,
-               LBRAC, RBRAC, OR, AND, COMMA}
+               LBRAC, RBRAC, OR, AND, COMMA, LSQUARE, RSQUARE, ARRAY }
     
     # Ignored patterns
     ignore_newline = r'\n+'
@@ -29,8 +29,9 @@ class asLexer(Lexer):
     NAME['nothing'] = PASS
     NAME['and'] = AND
     NAME['or'] = OR
+    NAME['array'] = ARRAY
 
-    literals = { '[', ']', '(' , ')', ':' }
+    literals = { '[', ']', '(' , ')', ':', ',' }
 
     # Operators
     PLUS = r'\+'
@@ -71,3 +72,7 @@ class asLexer(Lexer):
     def error(self, t):
         print("Illegal character '%s'" % t.value[0])
         self.index += 1
+
+    # Add square bracket tokens
+    LSQUARE = r'\['
+    RSQUARE = r'\]'

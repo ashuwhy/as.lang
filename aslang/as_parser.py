@@ -75,6 +75,30 @@ class asParser(Parser):
     def statement(self, p):
         return ('break',)
 
+    @_('ARRAY LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array1d', p.expr)
+
+    @_('ARRAY LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array2d', p.expr0, p.expr1)
+
+    @_('NAME LSQUARE expr RSQUARE ARROW expr')
+    def statement(self, p):
+        return ('array_assign1d', p.NAME, p.expr0, p.expr1)
+
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE ARROW expr')
+    def statement(self, p):
+        return ('array_assign2d', p.NAME, p.expr0, p.expr1, p.expr2)
+
+    @_('NAME LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array_access1d', p.NAME, p.expr)
+
+    @_('NAME LSQUARE expr RSQUARE LSQUARE expr RSQUARE')
+    def expr(self, p):
+        return ('array_access2d', p.NAME, p.expr0, p.expr1)
+
     ############################################################
     # Expressions
     ############################################################

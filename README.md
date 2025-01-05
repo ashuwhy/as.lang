@@ -48,6 +48,23 @@ output y    // Displays: Mark
 
 > **Note:** Variable names are case-sensitive
 
+### Arrays
+
+AS supports both 1D and 2D arrays:
+
+```javascript
+// 1D Array
+numbers = array[5]      // Creates array of size 5
+numbers[0] = 10         // Set value
+output numbers[0]       // Access value
+
+// 2D Array
+matrix = array[3][3]    // Creates 3x3 matrix
+matrix[0][0] = 1        // Set value
+matrix[1][1] = 5        // Set value
+output matrix[1][1]     // Access value
+```
+
 ### Comments
 
 Single-line comments start with `//`:
@@ -128,9 +145,19 @@ do {
 
 #### Lists/Arrays
 
-Create lists using square brackets:
+Create and use arrays:
 ```javascript
-list = [1, 2, 3, 4, 5]
+// 1D Array example
+numbers = array[5]
+numbers[0] = 10
+numbers[1] = 20
+output numbers[0]     // Outputs: 10
+
+// 2D Array example
+matrix = array[2][2]
+matrix[0][0] = 1
+matrix[0][1] = 2
+output matrix[0][1]   // Outputs: 2
 ```
 
 ## Contributing
