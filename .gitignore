@@ -39,6 +39,8 @@ venv.bak/
 *.dll
 *.so
 *.dylib
+*.a
+*.lib
 *.exe
 *.out
 *.app
@@ -49,9 +51,14 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
-build/
+.vs/
 Debug/
 Release/
+x64/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
 
 # Go
 *.exe
@@ -62,7 +69,7 @@ Release/
 *.test
 *.out
 go.work
-vendor/
+go.sum
 
 # Julia
 *.jl.cov
@@ -82,11 +89,37 @@ pkg/
 *.swp
 *.swo
 *~
-.vs/
+.DS_Store
+.project
+.classpath
+.settings/
 *.sublime-workspace
 *.sublime-project
 
-# OS
+# Build and Dependencies
+node_modules/
+bower_components/
+jspm_packages/
+web_modules/
+
+# Logs and Databases
+*.log
+*.sqlite
+*.db
+
+# Environment and Configuration
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+*.pem
+*.key
+*.cert
+config.local.json
+
+# OS Generated
 .DS_Store
 .DS_Store?
 ._*
@@ -95,47 +128,28 @@ pkg/
 ehthumbs.db
 Thumbs.db
 
-# Project specific
-/bin/
-/pkg/
-*.log
-.aslang/
-.cache/
-/temp/
-/tmp/
-
-# Sensitive data
-*.pem
-*.key
-*.cert
-.env*
-config.local.json
-secrets.json
-
-# Documentation artifacts
+# Project Specific
 /docs/_build/
-/site/
-
-# Test artifacts
+/docs/_static/
+/docs/_templates/
 .coverage
 coverage.xml
 .pytest_cache/
 htmlcov/
 .tox/
+.coverage.*
 nosetests.xml
-coverage/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
 
-# Dependency directories
-node_modules/
-jspm_packages/
-bower_components/
-
-# Build artifacts
-*.o
-*.a
-*.lib
-*.exp
-*.pdb
-*.ilk
-*.map
-*.dSYM/
+# Temporary Files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
