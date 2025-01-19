@@ -3,6 +3,8 @@
 from sys import argv
 from setuptools import setup, find_packages
 from setuptools_rust import Binding, RustExtension
+from setuptools.command.build_ext import build_ext
+import subprocess
 
 
 if len(argv) > 1 and argv[1] in ('install', 'build', 'sdist', 'bdist_wheel'):
@@ -15,6 +17,24 @@ classifiers = [
   'License :: OSI Approved :: MIT License',
   'Programming Language :: Python :: 3'
 ]
+
+class CustomBuildExt(build_ext):
+    def run(self):
+        # Build Rust components
+        subprocess.check_call(['cargo', 'build', '--release'], cwd='aslang/array_ops')
+        subprocess.check_call(['cargo', 'build', '--release'], cwd='aslang/wasm_ops')
+        
+        # Build C++ components
+        subprocess.check_call(['cmake', '.'], cwd='aslang/cpp_ops')
+        subprocess.check_call(['make'], cwd='aslang/cpp_ops')
+        
+        # Build Go components
+        subprocess.check_call(['go', 'build', '-buildmode=c-shared'], cwd='aslang/go_ops')
+        
+        # Build Julia components
+        subprocess.check_call(['julia', 'build.jl'], cwd='aslang/julia_ops')
+        
+        super().run()
 
 setup(
   name='as',
@@ -40,7 +60,15 @@ setup(
       "aslang.array_ops",
       "aslang/array_ops/Cargo.toml",
       binding=Binding.PyO3
+    ),
+    RustExtension(
+      "aslang.wasm_ops",
+      "aslang/wasm_ops/Cargo.toml",
+      binding=Binding.PyO3
     )
   ],
-  zip_safe=False
+  zip_safe=False,
+  cmdclass={
+    'build_ext': CustomBuildExt,
+  },
 )
