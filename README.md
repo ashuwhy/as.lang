@@ -1,56 +1,59 @@
 # AS Programming Language
 
-AS is a lightweight programming language implemented in Python, designed for simplicity and ease of use.
+AS is a high-performance, multi-paradigm programming language that combines the simplicity of Python with the power of multiple language integrations.
 
 ![Version](https://img.shields.io/badge/version-0.1-blue)
+![Languages](https://img.shields.io/badge/languages-Python%20%7C%20Rust%20%7C%20C++%20%7C%20Go%20%7C%20Julia-orange)
+![WASM](https://img.shields.io/badge/WASM-ready-green)
+
+## Features
+
+- 🚀 High-performance array operations (Rust)
+- 💻 SIMD vector operations (C++)
+- 🔄 Concurrent processing (Go)
+- 📊 Scientific computing (Julia)
+- 🌐 Browser support (WebAssembly)
+- 🔧 Simple, clean syntax
+- 📦 Multi-dimensional arrays (1D to 4D)
 
 ## Installation
 
-You can install AS using one of the following methods:
+### Prerequisites
+- Python 3.6+
+- Rust toolchain
+- C++ compiler with SIMD support
+- Go 1.16+
+- Julia 1.6+
+- CMake
 
-**Stable Release:**
+### Install from PyPI
 ```bash
 pip install as
 ```
 
-**Development Version:**
+### Install from Source
 ```bash
-pip install git+https://github.com/ashuwhy/aslang.git
+git clone https://github.com/ashuwhy/aslang.git
+cd aslang
+pip install .
 ```
-
-## Usage
-
-Run AS programs using:
-```bash
-python -m aslang [filename]
-```
-If no filename is provided, AS will start in interactive shell mode.
 
 ## Language Features
 
 ### Basic Syntax
 
-**Hello World**
 ```javascript
+// Hello World
 output "Hello, World!"
-```
 
-### Variables
-
-Variables are dynamically typed and created upon first assignment:
-
-```javascript
+// Variables
 x = 5
-y = "Mark"
+y = "Hello"
 output x    // Displays: 5
-output y    // Displays: Mark
+output y    // Displays: Hello
 ```
 
-> **Note:** Variable names are case-sensitive
-
-### Arrays
-
-AS supports multi-dimensional arrays (1D to 4D):
+### Multi-dimensional Arrays
 
 ```javascript
 // 1D Array
@@ -70,107 +73,134 @@ hypercube = array[2][2][2][2]
 hypercube[0][0][0][0] = 1
 ```
 
-Each array dimension is zero-indexed and supports both reading and writing operations. Arrays are initialized with zeros.
+### High-Performance Operations
 
-### Comments
-
-Single-line comments start with `//`:
+#### SIMD Vector Operations (C++)
 ```javascript
-// This is a comment
-output "Hello, World!"
+// Fast vector addition using SIMD
+result = vector_add(array1, array2)
 ```
 
-### Operators
+#### Concurrent Processing (Go)
+```javascript
+// Parallel processing
+result = concurrent_map(array, (x) => x * 2)
+```
 
-#### Arithmetic Operators
-
-| Operator | Description    | Example |
-|----------|----------------|---------|
-| +        | Addition       | x + y   |
-| -        | Subtraction    | x - y   |
-| *        | Multiplication | x * y   |
-| /        | Division       | x / y   |
-| %        | Modulus        | x % y   |
-| inc      | Increment      | inc x   |
-| dec      | Decrement      | dec x   |
-| ^        | Exponent       | x ^ y   |
-
-#### Comparison Operators
-
-| Operator | Description              | Example |
-|----------|--------------------------|---------|
-| ==       | Equal to                 | x == y  |
-| !=       | Not equal to            | x != y  |
-| >        | Greater than            | x > y   |
-| >=       | Greater than or equal   | x >= y  |
-| <        | Less than               | x < y   |
-| <=       | Less than or equal      | x <= y  |
+#### Scientific Computing (Julia)
+```javascript
+// Matrix operations
+eigenvals = matrix_eigenvals(matrix)
+svd_result = matrix_svd(matrix)
+solution = matrix_solve(A, b)
+```
 
 ### Control Structures
 
-#### If-Else Statements
-
 ```javascript
+// If-else statements
 if condition {
     statement
 } else {
     statement
 }
-```
 
-Example:
-```javascript
-name = input "Enter your name: "
-if name == "Ed Sheeran" {
-    output "Hi, " + name
-} else {
-    output "Bye, " + name
-}
-```
-
-#### While Loops
-
-```javascript
+// While loops
 while condition 
 do {
     statement
 }
 ```
 
-Example:
+### Input/Output
 ```javascript
-start = 1
-end = 10
-while start != end
-do {
-    output start
-    inc start
-}
+// Output
+output "Enter your name: "
+
+// Input
+name = input "Your name: "
 ```
 
-### Data Structures
+## Performance Features
 
-#### Lists/Arrays
+### 1. Rust-powered Array Operations
+- Zero-cost abstractions
+- Memory safety
+- Cache-efficient operations
+- Bounds checking
 
-Create and use arrays:
+### 2. C++ SIMD Acceleration
+- AVX2 vector operations
+- Parallel processing
+- Cache optimization
+- Low-level performance
+
+### 3. Go Concurrency
+- Goroutine-based parallelism
+- Channel communication
+- Efficient scheduling
+- Resource pooling
+
+### 4. Julia Scientific Computing
+- High-performance matrix operations
+- Advanced mathematical functions
+- Optimized linear algebra
+- Statistical computations
+
+### 5. WebAssembly Support
+- Browser execution
+- Near-native performance
+- Cross-platform compatibility
+- Web integration
+
+## Examples
+
+### Basic Array Operations
 ```javascript
-// 1D Array example
 numbers = array[5]
 numbers[0] = 10
 numbers[1] = 20
 output numbers[0]     // Outputs: 10
+```
 
-// 2D Array example
-matrix = array[2][2]
-matrix[0][0] = 1
-matrix[0][1] = 2
-output matrix[0][1]   // Outputs: 2
+### High-Performance Computing
+```javascript
+// SIMD vector addition
+vec1 = array[1000]
+vec2 = array[1000]
+result = vector_add(vec1, vec2)
+
+// Concurrent processing
+doubled = concurrent_map(result, (x) => x * 2)
+
+// Matrix operations
+matrix = array[10][10]
+eigenvals = matrix_eigenvals(matrix)
 ```
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+### Development Setup
+1. Clone the repository
+2. Install development dependencies:
+```bash
+pip install -r requirements-dev.txt
+```
+3. Build the project:
+```bash
+python setup.py develop
+```
+
 ## License
 
 MIT
+
+## Credits
+
+- Rust integration: High-performance array operations
+- C++ integration: SIMD vector operations
+- Go integration: Concurrent processing
+- Julia integration: Scientific computing
+- WASM support: Browser execution
