@@ -307,7 +307,6 @@ def evaluate(tree):
             print(f"as says: Array '{array_name}' hasn't been defined!")
         except IndexError:
             print(f"as says: Index [{idx1}][{idx2}][{idx3}][{idx4}] is out of range!")
-<<<<<<< HEAD:src/runtime/executor.py
 
     elif rule == 'vector_add':
         arr1 = evaluate(tree[1])
@@ -326,8 +325,6 @@ def evaluate(tree):
         runtime = ASRuntime()
         return runtime.matrix_eigenvals(matrix)
 
-=======
->>>>>>> 166056c (3d & 4d array support):aslang/executor.py
     else:
         #print(rule, tree)
         pass

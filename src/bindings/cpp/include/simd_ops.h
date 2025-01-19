@@ -40,4 +40,4 @@ void vector_scale_f64(const double* input, double scale, double* result, size_t 
 }
 #endif
 
-#endif // ASLANG_SIMD_OPS_H 
+#endif // ASLANG_SIMD_OPS_H
