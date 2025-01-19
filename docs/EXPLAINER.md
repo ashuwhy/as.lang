@@ -1,4 +1,4 @@
-# AS Lang - A Multi-Language Programming System
+# Lang AS - A Multi-Language Programming System
 *Created by Ashutosh Sharma*
 
 ## Table of Contents
@@ -26,7 +26,7 @@ When I created AS Lang, my vision was to build a high-performance multi-language
 - WebAssembly's universal runtime capabilities
 - Python's ease of use and extensive ecosystem
 
-The result is AS Lang - a system that not only performs exceptionally well but also provides a delightful developer experience.
+The result is AS Lang - a system that performs exceptionally well and provides a delightful developer experience.
 
 AS Lang is a high-performance multi-language programming system that combines the strengths of multiple programming languages:
 - Rust for core language implementation and memory safety
@@ -38,7 +38,7 @@ AS Lang is a high-performance multi-language programming system that combines th
 
 ## Prerequisites
 
-To understand and work with this project, you should have knowledge of:
+To understand and work with this project, you should know of:
 
 1. Programming Languages:
    - Rust (intermediate level)
@@ -403,25 +403,25 @@ When designing AS Lang, I followed these core principles:
 
 Here are some real-world performance comparisons:
 
-```
+
 Operation          | AS Lang  | Python | C++    | Rust
 ------------------|----------|--------|---------|--------
 Array Sum (1M)    | 0.8ms   | 15ms   | 0.9ms  | 0.85ms
 Matrix Mult (1k²) | 12ms    | 250ms  | 15ms   | 14ms
 String Parse (1MB)| 5ms     | 45ms   | 7ms    | 6ms
-```
+
 
 ### Memory Usage
 
 Typical memory footprint for common operations:
 
-```
+
 Component          | Heap    | Stack  | Total
 ------------------|---------|--------|-------
 Runtime Core      | 2.5MB   | 64KB   | ~2.6MB
 Parser Context    | 512KB   | 32KB   | ~544KB
 Compiler Instance | 1.5MB   | 128KB  | ~1.6MB
-```
+
 
 ## License
 
@@ -429,6 +429,6 @@ MIT License
 
 Copyright (c) 2025 Ashutosh Sharma
 
-As the creator of AS Lang, I believe in open source and community-driven development. This software is provided "as is", without warranty of any kind, express or implied. You are free to use, modify, and distribute this software under the terms of the MIT License.
+As the creator of AS Lang, I believe in open-source and community-driven development. This software is provided "as is", without warranty of any kind, express or implied. You are free to use, modify, and distribute this software under the terms of the MIT License.
 
 All rights reserved. 
