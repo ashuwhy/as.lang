@@ -306,6 +306,48 @@ def evaluate(tree):
     else:
         #print(rule, tree)
         pass
+
+    if rule in ('array1d', 'array2d', 'array3d', 'array4d'):
+        dims = []
+        for i in range(1, len(tree)):
+            dims.append(evaluate(tree[i]))
+        try:
+            dims = validate_array_dims(dims)
+            return create_nd_array(dims)
+        except ValueError as e:
+            print(f"as says: {e}")
+            return None
+
+    elif rule.startswith('array_access'):
+        array_name = tree[1]
+        indices = [evaluate(tree[i]) for i in range(2, len(tree))]
+        try:
+            if array_name not in names:
+                raise KeyError(array_name)
+            array = names[array_name]
+            indices = validate_array_indices(array, indices)
+            return get_array_element(array, indices)
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except (ValueError, IndexError) as e:
+            print(f"as says: {e}")
+
+    elif rule.startswith('array_assign'):
+        array_name = tree[1]
+        indices = [evaluate(tree[i]) for i in range(2, len(tree)-1)]
+        value = evaluate(tree[-1])
+        try:
+            if array_name not in names:
+                raise KeyError(array_name)
+            array = names[array_name]
+            indices = validate_array_indices(array, indices)
+            set_array_element(array, indices, value)
+            return value
+        except KeyError:
+            print(f"as says: Array '{array_name}' hasn't been defined!")
+        except (ValueError, IndexError) as e:
+            print(f"as says: {e}")
+
 class Break:
     pass
 
@@ -329,4 +371,49 @@ def shell():
             break
         tree = parser.parse(lexer.tokenize(text))
         evaluate(tree)
+
+def validate_array_dims(dims):
+    """Validate array dimensions"""
+    for dim in dims:
+        if not isinstance(dim, (int, float)) or dim < 0:
+            raise ValueError(f"Array dimension must be a positive number, got {dim}")
+        if int(dim) != dim:
+            raise ValueError(f"Array dimension must be an integer, got {dim}")
+    return [int(dim) for dim in dims]
+
+def create_nd_array(dims):
+    """Create an n-dimensional array initialized with zeros"""
+    if not dims:
+        return 0
+    if len(dims) == 1:
+        return [0] * dims[0]
+    return [create_nd_array(dims[1:]) for _ in range(dims[0])]
+
+def validate_array_indices(array, indices):
+    """Validate array indices"""
+    current = array
+    for i, idx in enumerate(indices):
+        if not isinstance(current, list):
+            raise ValueError(f"Too many indices for array dimension {i}")
+        if not isinstance(idx, (int, float)) or int(idx) != idx:
+            raise ValueError(f"Array index must be an integer, got {idx}")
+        idx = int(idx)
+        if idx < 0 or idx >= len(current):
+            raise IndexError(f"Index {idx} is out of range for dimension {i}")
+        current = current[idx]
+    return [int(idx) for idx in indices]
+
+def get_array_element(array, indices):
+    """Get element from n-dimensional array"""
+    current = array
+    for idx in indices:
+        current = current[idx]
+    return current
+
+def set_array_element(array, indices, value):
+    """Set element in n-dimensional array"""
+    current = array
+    for idx in indices[:-1]:
+        current = current[idx]
+    current[indices[-1]] = value
 
