@@ -1,0 +1,17 @@
+[package]
+name = "aslang-array-ops"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ashutosh Sharma <ashutoshsharmawhy@gmail.com>"]
+description = "Array operations for AS Lang"
+license = "MIT"
+
+[lib]
+name = "aslang_array_ops"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+rayon.workspace = true
+ndarray.workspace = true
+num.workspace = true
+pyo3.workspace = true 

@@ -1,0 +1,18 @@
+[package]
+name = "aslang-wasm"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ashutosh Sharma <ashutoshsharmawhy@gmail.com>"]
+description = "WebAssembly support for AS Lang"
+license = "MIT"
+
+[lib]
+name = "aslang_wasm"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen.workspace = true
+js-sys.workspace = true
+web-sys.workspace = true
+serde.workspace = true
+serde_json.workspace = true 
