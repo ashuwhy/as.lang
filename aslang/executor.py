@@ -1,5 +1,6 @@
 from .as_lexer import asLexer
 from .as_parser import asParser
+from .array_ops import NDArray
 
 VERSION = "0.1"
 
@@ -325,11 +326,12 @@ def evaluate(tree):
             if array_name not in names:
                 raise KeyError(array_name)
             array = names[array_name]
-            indices = validate_array_indices(array, indices)
-            return get_array_element(array, indices)
+            if not isinstance(array, NDArray):
+                raise TypeError("Not an array")
+            return array.get([int(i) for i in indices])
         except KeyError:
             print(f"as says: Array '{array_name}' hasn't been defined!")
-        except (ValueError, IndexError) as e:
+        except (ValueError, TypeError) as e:
             print(f"as says: {e}")
 
     elif rule.startswith('array_assign'):
@@ -340,12 +342,13 @@ def evaluate(tree):
             if array_name not in names:
                 raise KeyError(array_name)
             array = names[array_name]
-            indices = validate_array_indices(array, indices)
-            set_array_element(array, indices, value)
+            if not isinstance(array, NDArray):
+                raise TypeError("Not an array")
+            array.set([int(i) for i in indices], float(value))
             return value
         except KeyError:
             print(f"as says: Array '{array_name}' hasn't been defined!")
-        except (ValueError, IndexError) as e:
+        except (ValueError, TypeError) as e:
             print(f"as says: {e}")
 
 class Break:
@@ -374,20 +377,18 @@ def shell():
 
 def validate_array_dims(dims):
     """Validate array dimensions"""
-    for dim in dims:
-        if not isinstance(dim, (int, float)) or dim < 0:
-            raise ValueError(f"Array dimension must be a positive number, got {dim}")
-        if int(dim) != dim:
-            raise ValueError(f"Array dimension must be an integer, got {dim}")
-    return [int(dim) for dim in dims]
+    try:
+        return [int(dim) for dim in dims if int(dim) > 0]
+    except (TypeError, ValueError):
+        raise ValueError("Array dimensions must be positive integers")
 
 def create_nd_array(dims):
-    """Create an n-dimensional array initialized with zeros"""
-    if not dims:
-        return 0
-    if len(dims) == 1:
-        return [0] * dims[0]
-    return [create_nd_array(dims[1:]) for _ in range(dims[0])]
+    """Create an n-dimensional array using Rust implementation"""
+    try:
+        return NDArray(dims)
+    except ValueError as e:
+        print(f"as says: {e}")
+        return None
 
 def validate_array_indices(array, indices):
     """Validate array indices"""

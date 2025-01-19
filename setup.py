@@ -2,6 +2,7 @@
 
 from sys import argv
 from setuptools import setup, find_packages
+from setuptools_rust import Binding, RustExtension
 
 
 if len(argv) > 1 and argv[1] in ('install', 'build', 'sdist', 'bdist_wheel'):
@@ -33,5 +34,13 @@ setup(
   keywords='as,language,as lang', 
   packages=find_packages(),
   install_requires= ['sly'],
-  python_requires='>=3.6'
+  python_requires='>=3.6',
+  rust_extensions=[
+    RustExtension(
+      "aslang.array_ops",
+      "aslang/array_ops/Cargo.toml",
+      binding=Binding.PyO3
+    )
+  ],
+  zip_safe=False
 )
