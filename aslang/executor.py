@@ -1,6 +1,9 @@
 from .as_lexer import asLexer
 from .as_parser import asParser
 from .array_ops import NDArray
+from .cpp_ops import SIMDOps
+from .go_ops import concurrent_map
+from .julia_ops import ASJulia
 
 VERSION = "0.1"
 
@@ -304,6 +307,24 @@ def evaluate(tree):
             print(f"as says: Array '{array_name}' hasn't been defined!")
         except IndexError:
             print(f"as says: Index [{idx1}][{idx2}][{idx3}][{idx4}] is out of range!")
+
+    elif rule == 'vector_add':
+        arr1 = evaluate(tree[1])
+        arr2 = evaluate(tree[2])
+        runtime = ASRuntime()
+        return runtime.vector_add(arr1, arr2)
+    
+    elif rule == 'concurrent_map':
+        arr = evaluate(tree[1])
+        fn = evaluate(tree[2])
+        runtime = ASRuntime()
+        return runtime.concurrent_map(arr, fn)
+    
+    elif rule == 'matrix_eigenvals':
+        matrix = evaluate(tree[1])
+        runtime = ASRuntime()
+        return runtime.matrix_eigenvals(matrix)
+
     else:
         #print(rule, tree)
         pass
@@ -417,4 +438,18 @@ def set_array_element(array, indices, value):
     for idx in indices[:-1]:
         current = current[idx]
     current[indices[-1]] = value
+
+class ASRuntime:
+    def __init__(self):
+        self.simd_ops = SIMDOps()
+        self.julia = ASJulia()
+    
+    def vector_add(self, arr1, arr2):
+        return self.simd_ops.vector_add(arr1, arr2)
+    
+    def concurrent_map(self, arr, fn):
+        return concurrent_map(arr, fn)
+    
+    def matrix_eigenvals(self, matrix):
+        return self.julia.matrix_eigenvals(matrix)
 
