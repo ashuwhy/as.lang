@@ -1,2 +1,0 @@
-sly>=0.4
-setuptools-rust>=1.5.2

@@ -1,7 +1,0 @@
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/aslang_cpp_ops.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/edit_cache.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/rebuild_cache.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/list_install_components.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/install.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/install/local.dir
-/Users/air/Desktop/as.lang/target/release/build/aslang-3eac1c5ab9ed74a1/out/build/CMakeFiles/install/strip.dir

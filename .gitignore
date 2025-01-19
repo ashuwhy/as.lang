@@ -1,5 +1,141 @@
-**/__pycache__
-/as.egg-info
-/dist
-log.out
-/build
+# Rust
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# C++
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.exe
+*.out
+*.app
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+build/
+Debug/
+Release/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+vendor/
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+deps/deps.jl
+Manifest.toml
+
+# WebAssembly
+*.wasm
+*.wat
+pkg/
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.vs/
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+/bin/
+/pkg/
+*.log
+.aslang/
+.cache/
+/temp/
+/tmp/
+
+# Sensitive data
+*.pem
+*.key
+*.cert
+.env*
+config.local.json
+secrets.json
+
+# Documentation artifacts
+/docs/_build/
+/site/
+
+# Test artifacts
+.coverage
+coverage.xml
+.pytest_cache/
+htmlcov/
+.tox/
+nosetests.xml
+coverage/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components/
+
+# Build artifacts
+*.o
+*.a
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.map
+*.dSYM/
